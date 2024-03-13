@@ -1,0 +1,25 @@
+---
+interface Props {
+    title: string,
+    desc: string,
+    img?: string,
+    imgAlt?: string,
+    url?: string,
+    github?: string,
+    tags: string[]
+}
+
+const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
+---
+
+<div class="article-wrapper">
+    <article class="container">
+        <img class="preview" src=`img/${img}`/>
+        <div class="details">
+            <h3>{title}</h3>
+            <p>{desc}</p>
+            {(url !== undefined) && <a href={url} target="__blank" class="link-button view-site">View Site</a>}
+            {(github !== undefined) && <a href={github} target="__blank" class="link-button view-github">View on Github</a>}
+        </div>
+    </article>
+</div>
