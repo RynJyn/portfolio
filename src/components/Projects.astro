@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import PortfolioItem from '@components/ui/PortfolioItem.astro';
+
+const projects = await getCollection('projects');
+---
+
+<section id="projects">
+    <div>
+        <h2>Projects</h2>
+        {
+            projects.map(project => (
+                <PortfolioItem
+                    title={project.data.title}
+                    desc={project.data.desc}
+                    img={project.data.img}
+                    imgAlt={project.data.imgAlt}
+                    url={project.data.url}
+                    github={project.data.github}
+                    tags={project.data.tags}
+                />
+            ))
+        }
+    </div>
+</section>
