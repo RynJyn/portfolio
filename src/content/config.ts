@@ -13,6 +13,19 @@ const projectCollection = defineCollection({
       }),
 });
 
+const skillsCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+        slot: z.number(),
+        skills: z.array(z.object({
+            name: z.string(),
+            icon: z.string()
+        }))
+    })
+});
+
 export const collections = {
     'projects': projectCollection,
+    'skills': skillsCollection
 };
