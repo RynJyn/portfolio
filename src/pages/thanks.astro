@@ -1,0 +1,34 @@
+---
+import Layout from '@layouts/Layout.astro'
+---
+
+<Layout title="Ryan Jeynes | Web Portfolio">
+    <main>
+        <h2>Your message was sent!</h2>
+        <p>Thank you for enquiring! Click <a href="/">here</a> to return to my portfolio.</p>
+    </main>
+</Layout>
+
+<style>
+    html,body {
+        height: 100%;
+    }
+
+    main {
+        margin-top: 2em;
+        text-align: center;
+    }
+
+    main h2, main p {
+        color: var(--text-dark);
+    }
+
+    body.dark main h2, body.dark main p {
+        color: var(--text-light);
+    }
+
+    main p a {
+        color: currentColor;
+        font-weight: 600;
+    }
+</style>
