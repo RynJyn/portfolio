@@ -14,24 +14,18 @@ interface Props {
 const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
 ---
 
-<!--<div class="project-wrapper">-->
 <Card>
     <article class="container">
         {<img class="preview" src={img ? `img/${img}` : 'img/in_progress.png'} alt={imgAlt ? imgAlt : "Hands typing on a laptop keyboard, indicating a work in progress."} loading="lazy" decoding="async"/>}
         <div class="project-details">
             <h3>{title}</h3>
             <Tags tags={tags}></Tags>
-            <!--<details>
-                <summary>Details</summary>
-                <p>{desc}</p>
-            </details>-->
             <p>{desc}</p>
             {(url !== undefined) && <a href={url} rel="noopener noreferrer" target="__blank" class="link-button view-site">View Site</a>}
             {(github !== undefined) && <a href={__github + github} rel="noopener noreferrer" target="__blank" class="link-button view-github">View on GitHub</a>}
         </div>
     </article>
 </Card>
-<!--</div>-->
 
 <style is:global>
     section#projects div.project-wrapper {
@@ -70,10 +64,9 @@ const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
         text-align-last: center;
     }
 
-    section#projects div.project-details summary {
+    /*section#projects div.project-details summary {
         text-align: left;
         cursor: pointer;
-        /*color: #333;*/
         color: var(--text-dark);
         user-select: none;
     }
@@ -83,17 +76,14 @@ const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
         text-align-last: center;
     }
     .dark section#projects div.project-details summary {
-        /*color: #ccc;*/
         color: var(--text-light);
-    }
+    }*/
 
     section#projects div.project-details h3, div.project-details p {
-        /*color: #333;*/
         color: var(--text-dark);
     }
 
     .dark section#projects div.project-details h3, .dark div.project-details p {
-        /*color: #ccc;*/
         color: var(--text-light);
     }
 

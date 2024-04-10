@@ -4,51 +4,42 @@ import Card from '@components/ui/Card.astro';
 ---
 
 <section id="contact">
-    <!--<div class="container">-->
-        <h2>Like my work? Get in touch</h2>
-        <form id="contact-form">
-            <label for="name">
-                Name:
-                <input type="text" name="name"/>
-            </label>
-            <label for="email">
-                Email:
-                <input type="email" name="email"/>
-            </label>
-            <label for="body">
-                Message:
-                <textarea name="body"></textarea>
-            </label>
-            <input id="submit-form" type="submit" value="Send"/>
-        </form>
-    <!--</div>-->
+    <h2>Like my work? Get in touch</h2>
+    <form id="contact-form">
+        <label for="name">
+            Name:
+            <input type="text" name="name"/>
+        </label>
+        <label for="email">
+            Email:
+            <input type="email" name="email"/>
+        </label>
+        <label for="body">
+            Message:
+            <textarea name="body"></textarea>
+        </label>
+        <input id="submit-form" type="submit" value="Send"/>
+    </form>
     <div id="contact-socials">
         <h3>You can also find me here:</h3>
         <div id="contact-cards">
-            <!--<div class="contact-card">-->
             <Card>
                 <Icon name="mdi:email"></Icon>
                 <h4>Email</h4>
                 <p>{__email}</p>
                 <a target="_blank" rel="noopener noreferrer" href=`mailto:${__email}`>Email me</a>
             </Card>
-            <!--</div>-->
-            <!--<div class="contact-card">-->
             <Card>
                 <Icon name="mdi:linkedin"></Icon>
                 <h4>LinkedIn</h4>
                 <p>Ryan Jeynes</p>
                 <a target="_blank" rel="noopener noreferrer" href=`${__linkedin}`>Message me</a>
             </Card>
-            <!--</div>-->
         </div>
     </div>
 </section>
 
 <style is:global>
-    /*section#contact {
-        background:#0a75ad;
-    }*/
     section#contact form#contact-form 
     {
         display: flex;
@@ -75,13 +66,11 @@ import Card from '@components/ui/Card.astro';
         display: block;
         text-align: center;
         font-weight: bold;
-        /*color: #333;*/
         color: var(--text-dark);
         width: 100%;
     }
 
     .dark section#contact form#contact-form label {
-        /*color: #ccc;*/
         color: var(--text-light);
     }
 
@@ -134,11 +123,7 @@ import Card from '@components/ui/Card.astro';
 
     section#contact div#contact-cards div.card {
         text-align: center;
-        /*border-radius: 25px;*/
         padding: 2rem;
-        /*background: #fff;
-        box-shadow: 1px 1px 5px #ddd;
-        box-sizing: border-box;*/
         width: 300px;
         max-width: 95%;
         color: var(--text-dark);
@@ -167,13 +152,7 @@ import Card from '@components/ui/Card.astro';
         text-decoration: none;
     }
 
-    /*.dark section#contact div#contact-cards div.contact-card {
-        background: #011f2f;
-        box-shadow: 1px 1px 5px #111;
-    }*/
-
     .dark section#contact div#contact-cards div.card h4, .dark section#contact div#contact-cards div.card p {
-        /*color: #ccc;*/
         color: var(--text-light);
     }
 </style>
