@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -14,5 +14,9 @@
     "astro": "^4.4.15",
     "astro-icon": "^1.1.0",
     "astro-navbar": "^2.3.1"
+  },
+  "devDependencies": {
+    "@iconify-json/devicon": "^1.1.37",
+    "@iconify-json/mdi": "^1.1.66"
   }
 }
