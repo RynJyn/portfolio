@@ -1,0 +1,19 @@
+<div class="card">
+    <slot/>
+</div>
+
+<style>
+    div.card {
+        border-radius: 25px;
+        /*background: #fff;*/
+        background: var(--card-bg-light);
+        box-shadow: 1px 1px 5px var(--card-shadow-light)/*#ddd*/;
+        box-sizing: border-box;
+    }
+
+    body.dark div.card {
+        /*background: #011f2f;*/
+        background: var(--card-bg-dark);
+        box-shadow: 1px 1px 5px var(--card-shadow-dark)/*#111*/;
+    }
+</style>

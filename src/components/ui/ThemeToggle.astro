@@ -1,0 +1,144 @@
+<label class="switch" for="theme-toggle">
+    <input id="theme-toggle" type="checkbox"/>
+    <!--<div class="theme-icons">
+        <Icon id="theme-light-icon" name="mdi:white-balance-sunny"></Icon>
+        <Icon id="theme-dark-icon" name="mdi:moon-and-stars"></Icon>
+    </div>-->
+    <span class="theme-slider"></span>
+</label>
+
+<style>
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+#theme-toggle { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: skyblue; /*#ccc;*/
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+body.dark .theme-slider {
+  background-color: slategrey;
+}
+
+.theme-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/*input:checked + .theme-slider {
+  background-color: #ccc;
+}*/
+
+input:focus + .theme-slider {
+  box-shadow: 0 0 1px #000;
+}
+
+/*body.dark .theme-slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}*/
+
+/* Rounded sliders */
+.theme-slider {
+  border-radius: 34px;
+}
+
+.theme-slider:before {
+  /*border-radius: 50%;
+  background: transparent;
+  box-shadow: inset 10px 5px 0px #333;
+  transform: rotate(-60deg);*/
+  border-radius: 50%;
+  background: yellow;
+  box-shadow: none;
+}
+
+body.dark .theme-slider:before {
+    /*background: yellow;
+    box-shadow: none;*/
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: inset 10px 5px 0px #333;
+    transform: rotate(-60deg);
+}
+</style>
+
+<script>
+    //window.addEventListener('DOMContentLoaded', function(){
+        determineTheme();
+
+        document.getElementById('theme-toggle').addEventListener('click', function(e){
+            document.body.classList.toggle('dark');
+
+            if (document.body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+
+            determineTheme();
+            //document.body.classList.toggle('dark');
+            /*if(e.target.checked)
+            {
+                document.body.classList.add('dark');
+            }
+            else {
+                document.body.classList.remove('dark');
+            }*/
+        });
+    //});
+
+    function determineTheme(){
+      //let themeToggle = document.getElementById('theme-toggle') as HTMLInputElement;
+      let theme = "light";
+
+      if(localStorage.theme) {
+        theme = localStorage.theme;
+      }
+      else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        theme = "dark";
+      }
+
+      toggleTheme();
+    }
+
+    function toggleTheme(){
+      switch(localStorage.theme)
+      {
+        case "dark":
+          document.body.classList.add('dark');
+          break;
+        case "light":
+          document.body.classList.remove('dark');
+          break;
+      }
+    }
+</script>

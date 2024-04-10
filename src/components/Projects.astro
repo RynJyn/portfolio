@@ -6,8 +6,8 @@ const projects = await getCollection('projects');
 ---
 
 <section id="projects">
-    <div>
         <h2>Projects</h2>
+        <div class="projects-list">
         {
             projects.map(project => (
                 <PortfolioItem
@@ -21,5 +21,48 @@ const projects = await getCollection('projects');
                 />
             ))
         }
-    </div>
+        </div>
+        <p>To see more of my previous projects, visit my <a target="_blank" rel="noopener noreferrer" href={__github}>GitHub profile</a>.</p>
 </section>
+
+<style is:global>
+    section#projects div.projects-list {
+        display: grid;
+        /*grid-template-columns: repeat(auto-fill,minmax(500px, 1fr));*/
+        /*grid-template-columns: repeat(auto-fill, min(95%, 500px));*/
+        grid-template-columns: repeat(auto-fill, minmax(0, 600px));
+        gap: 2em;
+        justify-content: center;
+    }
+    section#projects article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /*padding: 2.5rem 0;*/
+    }
+
+    section#projects > p {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    section#projects > p a {
+        color: currentColor;
+        font-weight: 600;
+    }
+
+    /*section#projects div.article-wrapper:not(:first-of-type)::before {
+        content: "";
+        display: block;
+        width: 90%;
+        max-width: 800px;
+        margin: auto;
+        border: 1px solid rgba(0,0,0,.1);
+    }*/
+
+    @media (max-width: 1024px) {
+        section#projects article {
+            flex-direction: column;
+        }
+    }
+</style>

@@ -1,4 +1,6 @@
 ---
+import Card from '@components/ui/Card.astro';
+import Tags from '@components/ui/Tags.astro';
 interface Props {
     title: string,
     desc: string,
@@ -12,14 +14,121 @@ interface Props {
 const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
 ---
 
-<div class="article-wrapper">
+<!--<div class="project-wrapper">-->
+<Card>
     <article class="container">
-        <img class="preview" src=`img/${img}`/>
-        <div class="details">
+        {<img class="preview" src={img ? `img/${img}` : 'img/in_progress.png'} alt={imgAlt ? imgAlt : "Hands typing on a laptop keyboard, indicating a work in progress."} loading="lazy" decoding="async"/>}
+        <div class="project-details">
             <h3>{title}</h3>
+            <Tags tags={tags}></Tags>
+            <!--<details>
+                <summary>Details</summary>
+                <p>{desc}</p>
+            </details>-->
             <p>{desc}</p>
-            {(url !== undefined) && <a href={url} target="__blank" class="link-button view-site">View Site</a>}
-            {(github !== undefined) && <a href={github} target="__blank" class="link-button view-github">View on Github</a>}
+            {(url !== undefined) && <a href={url} rel="noopener noreferrer" target="__blank" class="link-button view-site">View Site</a>}
+            {(github !== undefined) && <a href={__github + github} rel="noopener noreferrer" target="__blank" class="link-button view-github">View on GitHub</a>}
         </div>
     </article>
-</div>
+</Card>
+<!--</div>-->
+
+<style is:global>
+    section#projects div.project-wrapper {
+        border-radius: 25px;
+        /*padding: 2rem;*/
+        background: #fff;
+        box-shadow: 1px 1px 5px #ddd;
+        box-sizing: border-box;
+        /*max-width: 50%;*/
+        height: fit-content;
+    }
+    
+    section#projects img.preview {
+        width: 100%;
+        border-radius: 25px 25px 0 0;
+        /*max-width: 800px;*/
+        user-select: none;
+        aspect-ratio: 16/9;
+    }
+
+    section#projects div.project-details 
+    {
+        /*max-width: 50%;*/
+        /*padding: 0 2.5rem;*/
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        box-sizing: border-box;
+    }
+
+    section#projects div.project-details p {
+        text-align: justify;
+        text-align-last: center;
+    }
+
+    section#projects div.project-details summary {
+        text-align: left;
+        cursor: pointer;
+        /*color: #333;*/
+        color: var(--text-dark);
+        user-select: none;
+    }
+
+    section#projects div.project-details details p {
+        text-align: justify;
+        text-align-last: center;
+    }
+    .dark section#projects div.project-details summary {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+
+    section#projects div.project-details h3, div.project-details p {
+        /*color: #333;*/
+        color: var(--text-dark);
+    }
+
+    .dark section#projects div.project-details h3, .dark div.project-details p {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+
+    .dark section#projects div.project-wrapper {
+        background: #011f2f;
+        box-shadow: 1px 1px 5px #111;
+    }
+
+    section#projects a.link-button 
+    {
+        display: inline-block;
+        width: fit-content;
+        margin: auto;
+        text-decoration: none;
+        color: #fff;
+        padding: 0.5em 1em;
+        border-radius: 0.5em;
+    }
+
+    .dark section#projects a.link-button {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+
+    section#projects a.link-button.view-site 
+    {
+        background-color: var(--primary);
+    }
+
+    section#projects a.link-button.view-site:hover {
+        background-color: #2a7ba5;
+    }
+
+    section#projects a.link-button.view-github 
+    {
+        background-color: #333;
+    }
+</style>

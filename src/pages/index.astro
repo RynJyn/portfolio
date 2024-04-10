@@ -1,22 +1,101 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Hero from '@components/Hero.astro'
+import About from '@components/About.astro'
+import Skills from '@components/Skills.astro'
 import Projects from '@components/Projects.astro'
 import Contact from '@components/Contact.astro'
 ---
 
 <Layout title="Ryan Jeynes | Web Portfolio">
-    <header>
-        <nav class="container">
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         <Hero/>
+        <About/>
+        <Skills/>
         <Projects/>
         <Contact/>
     </main>
+    <p id="credit"><a href="https://storyset.com/web">Web illustrations by Storyset</a></p>
 </Layout>
+
+<style is:global>
+    main {
+        margin: auto;
+    }
+    section {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /*padding: 2em 0;*/
+        padding: 5em 0;
+        box-sizing: border-box;
+        gap: 2em;
+    }
+    
+    section h2 {
+        color: var(--primary);/*#0a75ad;*/
+        width: fit-content;
+        margin: 0 auto;
+        /*margin-bottom: 1em;*/
+        /*padding-bottom: 1em;*/
+        padding-bottom: 0.3em;
+        /*border-bottom: 1px solid var(--primary);*/ /*#0a75ad;*/
+        text-align: center;
+        font-size: 2rem;
+        position: relative;
+    }
+
+    section h2::before {
+        content: " ";
+        display: block;
+        height: 2px;
+        background: var(--primary);
+        width: 50%;
+        position: absolute;
+        left: 25%;
+        bottom: 0;
+    }
+
+    section h3 {
+        text-align: center;
+        /*color: #0a75ad*/
+        color: var(--primary);
+    }
+
+    section p, p#credit {
+        /*color: #333;*/
+        color: var(--text-dark);
+    }
+
+    .dark section p, p#credit {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+
+    p#credit {
+        margin-bottom: 1em;
+    }
+
+    p#credit a {
+        color: var(--text-dark);
+        font-weight: 600;
+    }
+
+    .dark p#credit a {
+        color: var(--text-light);
+    }
+
+    /*.container{
+        max-width: 1920px;
+        margin: auto;
+    }*/
+    @media (max-width: 1024px) {
+        main {
+            max-width: 95%;
+        }
+        section h2 {
+            font-size: 1.3rem;
+        }
+    }
+</style>

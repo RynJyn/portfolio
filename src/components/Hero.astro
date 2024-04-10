@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '@assets/hero.svg';
+---
+
+<section id="hero">
+    <div class="container">
+            <div class="hero-text">
+            <h1>Hi, I'm Ryan! <span class="lighter block">I'm a Full Stack Web Developer from a beautiful small town in Worcestershire.</span></h1>
+        </div>
+        <Image id="hero-image" src={heroImage} alt="A man sitting at a desk, typing on a laptop. Names of various programming languages appear to be floating around him."></Image>
+    </div>
+</section>
+
+<style is:global>
+    section#hero h1, section#hero p {
+        var(--text-dark);
+        font-size: 3rem;
+    }
+
+    section#hero img#hero-image {
+        width: 95%;
+        max-width: 500px;
+    }
+
+    .dark section#hero h1 {
+        color: var(--text-light);
+    }
+
+    @media (max-width: 1024px) {
+        section#hero div.container {
+            flex-direction: column-reverse;
+        }
+
+        section#hero h1, section#hero p {
+            font-size: 1.5rem;
+        }
+    }
+</style>

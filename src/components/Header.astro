@@ -1,0 +1,145 @@
+---
+import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import { Icon } from "astro-icon/components";
+import ThemeToggle from "./ui/ThemeToggle.astro";
+---
+
+<header>
+    <Astronav closeOnClick>
+        <div id="header-left">
+            <div class="nav-toggle">
+                <MenuIcon class="nav-toggle-btn"/>
+            </div>
+            <ul id="header-socials">
+                <li><a target="_blank" rel="noopener noreferrer" href={__linkedin}><Icon class="icon-linkedin" name="mdi:linkedin"></Icon></a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href={__github}><Icon class="icon-github" name="mdi:github"></Icon></a></li>
+            </ul>
+        </div>
+        <MenuItems class="hidden">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </MenuItems>
+        <ThemeToggle></ThemeToggle>
+    </AstroNav>
+</header>
+
+<style is:global> 
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header div#header-left {
+        display: flex;
+        gap: 0.5em;
+    }
+
+    header ul li a {
+        color: var(--text-dark);
+        transition: color 0.25s ease;
+    }
+
+    header ul li a:hover, .dark header ul li a:hover {
+        color: #777;
+    }
+
+    .dark header ul li a {
+        color: var(--text-light);
+    }
+
+    .nav-toggle button {
+        background: none;
+        border: none;
+    }
+
+    body.dark .nav-toggle button {
+        color: var(--text-light);
+    }
+    
+    /*.nav-toggle-btn {
+        height: 1rem;
+        width: 1rem;
+    }*/
+
+    header ul#header-socials {
+        display: flex;
+        gap: 0.5em;
+        font-size: 1.5rem;
+    }
+
+    nav {
+        padding: 1em 0;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        /*color: #333;*/
+        /*color: var(--text-dark);*/
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    /*.dark nav ul li a {
+        color: var(--text-light);
+    }*/
+
+    /*nav ul li a:hover {
+        color: #777;
+    }*/
+
+    /*header .theme-icons {
+        font-size: 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        overflow: hidden;
+    }
+
+    header .theme-icons svg {
+        position: relative;
+        display: block;
+    }
+
+    header .theme-icons svg#theme-light-icon {
+        display: none;
+    }
+    
+    header .theme-icons svg#theme-dark-icon {
+        top: -1.5rem;
+    }*/
+
+    @media (min-width: 1024px) {
+        .nav-toggle {
+            display: none;
+        }
+
+        nav.hidden {
+            display: flex;
+        }
+
+        nav.hidden ul {
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        nav {
+            position: absolute;
+            top: 1.5rem;
+            padding: 1em;
+            background: #fff;
+        }
+    }
+</style>

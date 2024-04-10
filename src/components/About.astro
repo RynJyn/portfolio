@@ -1,3 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import aboutImage from '@assets/about.svg';
+---
+
 <section id="about">
-    
+    <h2>About Me</h2>
+    <div class="container">
+        <Image id="about-image" src={aboutImage} alt="A series of overlapping boxes showing the names of various programming languages" width="350" height="240"></Image>
+        <!--<img id="about-image" src="img/about.svg" alt="A series of overlapping boxes showing the names of various programming languages"/>-->
+        <p id="bio">I'm a self-taught web developer from a beautiful small town in Worcestershire, UK. I've had an interest in tinkering with web technologies ever since the days of Piczo and Freewebs, and <strong>source:</strong> frequently appeared in my address bar. Most recently I have worked with a large news company within the UK to help deliver data-driven content to millions of monthly readers.</p>
+    </div>
+    <!--<h3>I have experience in the following:</h3>
+    <ul>
+        <li>JS Icon</li>
+        <li>CSS Icon</li>
+    </ul>-->
 </section>
+
+<style is:global>
+    /*section#about {
+        background: #0a75ad;
+    }*/
+
+    section#about div.container {
+        gap: 2em;
+    }
+    section#about p#bio {
+        font-size: 1.5rem;
+    }
+
+    section#about img#about-image {
+        /*max-height: 250px;*/
+        width: 350px;
+        max-width: 70%;
+        height: auto;
+    }
+
+    @media (max-width: 1024px) {
+        section#about div.container {
+            flex-direction: column-reverse;
+        }
+
+        section#about p#bio {
+            font-size: 1rem;
+        }
+    }
+</style>

@@ -1,5 +1,10 @@
+---
+import { Icon } from "astro-icon/components";
+import Card from '@components/ui/Card.astro';
+---
+
 <section id="contact">
-    <div class="container">
+    <!--<div class="container">-->
         <h2>Like my work? Get in touch</h2>
         <form id="contact-form">
             <label for="name">
@@ -14,7 +19,161 @@
                 Message:
                 <textarea name="body"></textarea>
             </label>
-            <input type="submit" value="Send"/>
+            <input id="submit-form" type="submit" value="Send"/>
         </form>
+    <!--</div>-->
+    <div id="contact-socials">
+        <h3>You can also find me here:</h3>
+        <div id="contact-cards">
+            <!--<div class="contact-card">-->
+            <Card>
+                <Icon name="mdi:email"></Icon>
+                <h4>Email</h4>
+                <p>{__email}</p>
+                <a target="_blank" rel="noopener noreferrer" href=`mailto:${__email}`>Email me</a>
+            </Card>
+            <!--</div>-->
+            <!--<div class="contact-card">-->
+            <Card>
+                <Icon name="mdi:linkedin"></Icon>
+                <h4>LinkedIn</h4>
+                <p>Ryan Jeynes</p>
+                <a target="_blank" rel="noopener noreferrer" href=`${__linkedin}`>Message me</a>
+            </Card>
+            <!--</div>-->
+        </div>
     </div>
 </section>
+
+<style is:global>
+    /*section#contact {
+        background:#0a75ad;
+    }*/
+    section#contact form#contact-form 
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        width: 95%;
+        max-width: 400px;
+        margin: auto;
+        border-radius: 25px;
+        background: var(--card-bg-light);
+        box-shadow: 1px 1px 5px var(--card-shadow-light);
+        box-sizing: border-box;
+        padding: 1em;
+    }
+
+    body.dark section#contact form#contact-form {
+        background: var(--card-bg-dark);
+        box-shadow: 1px 1px 5px var(--card-shadow-dark);
+    }
+
+    section#contact form#contact-form label {
+        display: block;
+        text-align: center;
+        font-weight: bold;
+        /*color: #333;*/
+        color: var(--text-dark);
+        width: 100%;
+    }
+
+    .dark section#contact form#contact-form label {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+
+    section#contact form#contact-form label input, section#contact form#contact-form label textarea {
+        display: block;
+        box-sizing: border-box;
+        border: none;
+        margin-top: 0.5em;
+        padding: 0.5em;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background: #eee;
+        border-radius: 0.5em;
+    }
+
+    .dark section#contact form#contact-form label input, .dark section#contact form#contact-form label textarea {
+        background: #ccc;
+    }
+
+    section#contact form#contact-form label input {
+        width: 100%;
+        min-height: 30px;
+    }
+
+    section#contact form#contact-form label textarea {
+        width: 100%;
+        min-height: 100px;
+    }
+
+    section#contact form#contact-form input#submit-form {
+        background: var(--primary);
+        color: #eee;
+        font-weight: 600;
+        font-size: 1rem;
+        border: none;
+        padding: 0.5em 1em;
+        cursor: pointer;
+        border-radius: 0.5em;
+    }
+
+    body.dark section#contact form#contact-form input#submit-form {
+        color: var(--text-light);
+    }
+    section#contact div#contact-cards {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2em;
+        margin: 2em 0;
+    }
+
+    section#contact div#contact-cards div.card {
+        text-align: center;
+        /*border-radius: 25px;*/
+        padding: 2rem;
+        /*background: #fff;
+        box-shadow: 1px 1px 5px #ddd;
+        box-sizing: border-box;*/
+        width: 300px;
+        max-width: 95%;
+        color: var(--text-dark);
+    }
+
+    body.dark section#contact div#contact-cards div.card {
+        color: var(--text-light);
+    }
+
+    section#contact div#contact-cards div.card svg {
+        height: 2rem;
+        width: 2rem;
+        margin: auto;
+    }
+
+    section#contact div#contact-cards div.card a {
+        display: block;
+        margin: auto;
+        margin-top: 1em;
+        width: fit-content;
+        background: var(--primary);
+        border-radius: 0.5em;
+        padding: 0.5em 1.5em;
+        color: #eee;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    /*.dark section#contact div#contact-cards div.contact-card {
+        background: #011f2f;
+        box-shadow: 1px 1px 5px #111;
+    }*/
+
+    .dark section#contact div#contact-cards div.card h4, .dark section#contact div#contact-cards div.card p {
+        /*color: #ccc;*/
+        color: var(--text-light);
+    }
+</style>

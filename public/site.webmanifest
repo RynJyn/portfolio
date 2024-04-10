@@ -1,0 +1,10 @@
+{
+    "name": "Ryan Jeynes | Online Portfolio",
+    "short_name": "Ryan Jeynes",
+    "start_url": "https://ryanjeynes.co.uk/",
+    "display": "standalone",
+    "background-color": "#eee",
+    "theme-color": "#0a75ad",
+    "description": "A showcase of my skills and previous experience as a web developer",
+    "icons":[{"src":"/android-chrome-192x192.png","sizes":"192x192","type":"image/png"},{"src":"/android-chrome-512x512.png","sizes":"512x512","type":"image/png"}]
+}

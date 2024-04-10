@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import Card from '@components/ui/Card.astro';
+
+const skills = await getCollection('skills');
+const skills_data = skills.map(skill => skill.data).sort((a, b) => a.slot - b.slot);
+console.log(skills_data);
+---
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="container">
+    {
+        skills_data.map(
+            category => (
+                <>
+                <div class="skills-category">
+                    <h3>{category.title}</h3> 
+                    <div class="skills-list">
+                    {category.skills.map(skill => 
+                        <Card>
+                            <div class="skill-details">
+                                <Icon name={skill.icon} ></Icon>
+                                <h4>{skill.name}</h4>
+                            </div>
+                        </Card>)}
+                    </div>
+                </div>
+                </>
+            )
+        )
+    }
+    </div>
+</section>
+
+<style>
+    section#skills div.container {
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5em;
+    }
+
+    section#skills div.skills-category {
+        flex: 1;
+        width: 100%;
+    }
+
+    section#skills div.skills-list {
+        display: grid;
+        justify-content: space-around;
+        grid-template-columns: repeat(auto-fill, min(150px, 95%));
+        /*grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));*/
+        gap: 2em;
+        margin-top: 1em;
+    }
+
+    section#skills div.skills-list div.skill-details {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        /* font-size: 1.5rem; */
+        /* padding: 1em; */
+        box-sizing: border-box;
+        gap: 1em;
+        padding: 2em;
+    }
+
+    section#skills div.skills-list div.skill-details h4 {
+        color: var(--text-dark);
+    }
+    
+    body.dark section#skills div.skills-list div.skill-details h4 {
+        color: var(--text-light);
+    }
+
+    section#skills div.skills-list div.skill-details svg {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    /*body.dark section#skills div.skills-list div.skill-details svg {
+        filter: drop-shadow(5px 5px 5px #ccc) drop-shadow(-5px -5px 5px #ccc);
+    }*/
+</style>
