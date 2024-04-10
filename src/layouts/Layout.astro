@@ -9,13 +9,23 @@ const {title} = Astro.props;
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
+        <meta charset="utf-8" />
+        <meta name="theme-color" content="#0a75ad" />
+        <meta name="description" content="I'm a Full Stack Web Developer from a beautiful small town in Worcestershire. Check out my portfolio for some examples of my previous work.">
+        <meta property="og:title" content="Ryan Jeynes | Web Portfolio" />
+        <meta property="og:description" content="I'm a Full Stack Web Developer from a beautiful small town in Worcestershire. Check out my portfolio for some examples of my previous work." />
+        <meta property="og:url" content="https://www.ryanjeynes.co.uk/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_GB" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="canonical" href="https://www.ryanjeynes.co.uk/" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta name=”robots” content="index, nofollow">
+        <title>{title}</title>
 	</head>
 	<body>
         <Header/>
