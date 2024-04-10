@@ -1,7 +1,7 @@
 {
     "name": "Ryan Jeynes | Online Portfolio",
     "short_name": "Ryan Jeynes",
-    "start_url": "https://ryanjeynes.co.uk/",
+    "start_url": ".",
     "display": "standalone",
     "background-color": "#eee",
     "theme-color": "#0a75ad",
