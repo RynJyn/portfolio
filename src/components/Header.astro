@@ -2,27 +2,34 @@
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { Icon } from "astro-icon/components";
 import ThemeToggle from "./ui/ThemeToggle.astro";
+
+interface Props {
+    showMenu?: boolean
+};
+
+const {showMenu} = Astro.props;
+
 ---
 
 <header>
-    <Astronav closeOnClick>
+    <Astronav closeOnClick={showMenu}>
         <div id="header-left">
-            <div class="nav-toggle">
+            {showMenu && <div class="nav-toggle">
                 <MenuIcon class="nav-toggle-btn"/>
-            </div>
+            </div> }
             <ul id="header-socials">
                 <li><a target="_blank" rel="noopener noreferrer" href={__linkedin}><Icon class="icon-linkedin" name="mdi:linkedin"></Icon></a></li>
                 <li><a target="_blank" rel="noopener noreferrer" href={__github}><Icon class="icon-github" name="mdi:github"></Icon></a></li>
             </ul>
         </div>
-        <MenuItems class="hidden">
+        {showMenu && <MenuItems class="hidden">
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </MenuItems>
+        </MenuItems>}
         <ThemeToggle></ThemeToggle>
     </AstroNav>
 </header>
@@ -32,6 +39,7 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 1em 0;
     }
 
     header div#header-left {
@@ -72,9 +80,9 @@ import ThemeToggle from "./ui/ThemeToggle.astro";
         font-size: 1.5rem;
     }
 
-    nav {
+    /*nav {
         padding: 1em 0;
-    }
+    }*/
 
     nav ul {
         display: flex;
