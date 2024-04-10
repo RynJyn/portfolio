@@ -1,0 +1,22 @@
+<form name="contact-form" method="POST" id="contact-form" data-netlify="true" netlify-honeypot>
+    <p class="hidden">
+        <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+    </p>
+    <input type="hidden" name="form-name" value="contact-form" />
+    <label for="name">
+        Name:
+        <input type="text" name="name"/>
+    </label>
+    <label for="email">
+        Email:
+        <input type="email" name="email"/>
+    </label>
+    <label for="body">
+        Message:
+        <textarea name="body"></textarea>
+    </label>
+    <div data-netlify-recaptcha="true"></div>
+    <input id="submit-form" type="submit" value="Send"/>
+</form>
