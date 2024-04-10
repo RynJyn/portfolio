@@ -7,15 +7,15 @@
     <input type="hidden" name="form-name" value="contact-form" />
     <label for="name">
         Name:
-        <input id="name" type="text" name="name" autocomplete="name"/>
+        <input id="name" type="text" name="name" autocomplete="name" required/>
     </label>
     <label for="email">
         Email:
-        <input id="email" type="email" name="email" autocomplete="email"/>
+        <input id="email" type="email" name="email" autocomplete="email" required/>
     </label>
     <label for="message">
         Message:
-        <textarea id="message" name="message"></textarea>
+        <textarea id="message" name="message" required></textarea>
     </label>
     <div data-netlify-recaptcha="true"></div>
     <button type="submit">Send</button>
