@@ -18,9 +18,11 @@ const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
     <article class="container">
         {<img class="preview" src={img ? `img/${img}` : 'img/in_progress.png'} alt={imgAlt ? imgAlt : "Hands typing on a laptop keyboard, indicating a work in progress."} loading="lazy" decoding="async"/>}
         <div class="project-details">
-            <h3>{title}</h3>
-            <Tags tags={tags}></Tags>
-            <p>{desc}</p>
+            <div>
+                <h3>{title}</h3>
+                <Tags tags={tags}></Tags>
+                <p>{desc}</p>
+            </div>
             {(url !== undefined) && <a href={url} rel="noopener noreferrer" target="__blank" class="link-button view-site">View Site</a>}
             {(github !== undefined) && <a href={__github + github} rel="noopener noreferrer" target="__blank" class="link-button view-github">View on GitHub</a>}
         </div>
@@ -55,8 +57,18 @@ const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
         text-align: center;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
         gap: 1em;
         box-sizing: border-box;
+        height: 100%;
+    }
+
+    section#projects div.project-details > div
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
     }
 
     section#projects div.project-details p {
@@ -96,7 +108,6 @@ const {title, desc, img, imgAlt, url, github, tags} = Astro.props;
     {
         display: inline-block;
         width: fit-content;
-        margin: auto;
         text-decoration: none;
         color: #fff;
         padding: 0.5em 1em;
